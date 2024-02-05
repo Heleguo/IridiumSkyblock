@@ -22,8 +22,6 @@ public class PlayerMoveListener implements Listener {
 
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
 
-        user.getCurrentIsland().ifPresent(island -> {
-                if (item == null) continue;
 
                 ItemStack originalItem = item.clone();
 
