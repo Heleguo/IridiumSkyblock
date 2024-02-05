@@ -23,23 +23,6 @@ public class PlayerMoveListener implements Listener {
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
 
         user.getCurrentIsland().ifPresent(island -> {
-            if (event.getPlayer().getLocation().getY() >= LocationUtils.getMinHeight(event.getPlayer().getWorld())) return;
-
-            VoidEnhancementData voidEnhancementData = IridiumSkyblock.getInstance()
-                    .getEnhancements().voidEnhancement.levels
-                    .get(IridiumSkyblock.getInstance().getTeamManager().getTeamEnhancement(island, "void").getLevel());
-
-            if (voidEnhancementData == null || !voidEnhancementData.enabled) return;
-
-            if (!IridiumSkyblock.getInstance().getTeamManager().teleport(event.getPlayer(), event.getPlayer().getLocation(), island)) return;
-
-            event.getPlayer().sendMessage(StringUtils.color(IridiumSkyblock.getInstance().getMessages().voidTeleport
-                    .replace("%prefix%", IridiumSkyblock.getInstance().getConfiguration().prefix)));
-
-            if (voidEnhancementData.itemLossChance <= 0) return;
-
-            ArrayList<ItemStack> lostItems = new ArrayList<>();
-            for (ItemStack item : event.getPlayer().getInventory().getContents()) {
                 if (item == null) continue;
 
                 ItemStack originalItem = item.clone();
