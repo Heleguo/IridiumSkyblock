@@ -27,19 +27,6 @@ public class PlayerMoveListener implements Listener {
             for (ItemStack item : event.getPlayer().getInventory().getContents()) {
                 // ... （后续代码）
             }
-
-            IridiumSkyblock.getInstance().getDatabaseManager().getLostItemsTableManager().addEntry(new LostItems(
-                    event.getPlayer().getUniqueId(), lostItems.toArray(new ItemStack[0])));
-
-            event.getPlayer().sendMessage(StringUtils.color(IridiumSkyblock.getInstance()
-                    .getMessages().voidLostItems
-                    .replace("%prefix%", IridiumSkyblock.getInstance().getConfiguration().prefix)
-                    .replace("%items%", lostItems.stream()
-                            .map(item -> IridiumSkyblock.getInstance().getMessages().itemsString
-                                    .replace("%amount%", String.valueOf(item.getAmount()))
-                                    .replace("%item_name%", item.getItemMeta().hasDisplayName() ? item.getItemMeta().getDisplayName() : "%type%")
-                                    .replace("%type%", item.getType().name().trim().replace("_", " ")))
-                            .collect(Collectors.joining(", ")))
             ));
         });
     }
