@@ -22,9 +22,6 @@ public class PlayerMoveListener implements Listener {
 
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
 
-        user.getCurrentIsland().ifPresent(island -> {
-            if (event.getPlayer().getLocation().getY() >= LocationUtils.getMinHeight(event.getPlayer().getWorld())) return;
-
             VoidEnhancementData voidEnhancementData = IridiumSkyblock.getInstance()
                     .getEnhancements().voidEnhancement.levels
                     .get(IridiumSkyblock.getInstance().getTeamManager().getTeamEnhancement(island, "void").getLevel());
