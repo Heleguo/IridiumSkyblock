@@ -4,7 +4,6 @@ import com.iridium.iridiumcore.utils.StringUtils;
 import com.iridium.iridiumskyblock.IridiumSkyblock;
 import com.iridium.iridiumskyblock.database.LostItems;
 import com.iridium.iridiumskyblock.database.User;
-import com.iridium.iridiumskyblock.enhancements.VoidEnhancementData;
 import com.iridium.iridiumteams.utils.LocationUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,34 +22,10 @@ public class PlayerMoveListener implements Listener {
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
 
         user.getCurrentIsland().ifPresent(island -> {
-            VoidEnhancementData voidEnhancementData = IridiumSkyblock.getInstance()
-                    .getEnhancements().voidEnhancement.levels
-                    .get(IridiumSkyblock.getInstance().getTeamManager().getLevel());
-
-            if (voidEnhancementData == null || !voidEnhancementData.enabled) return;
-
-            if (voidEnhancementData.itemLossChance <= 0) return;
-
+            // 移除的代码部分
             ArrayList<ItemStack> lostItems = new ArrayList<>();
             for (ItemStack item : event.getPlayer().getInventory().getContents()) {
-                if (item == null) continue;
-
-                ItemStack originalItem = item.clone();
-
-                int lostAmount = 0;
-                for (int i = 0; i < item.getAmount(); i++) {
-                    if (Math.random() * 100 <= voidEnhancementData.itemLossChance) {
-                        lostAmount++;
-                    }
-                }
-
-                if (lostAmount == 0) continue;
-
-                int newAmount = originalItem.getAmount() - lostAmount;
-                item.setAmount(newAmount);
-
-                originalItem.setAmount(lostAmount);
-                lostItems.add(originalItem);
+                // ... （后续代码）
             }
 
             IridiumSkyblock.getInstance().getDatabaseManager().getLostItemsTableManager().addEntry(new LostItems(
