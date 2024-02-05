@@ -12,5 +12,3 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-
-public class PlayerMoveListener implements Listener {
