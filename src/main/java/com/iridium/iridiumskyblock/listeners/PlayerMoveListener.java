@@ -20,10 +20,3 @@ public class PlayerMoveListener implements Listener {
         User user = IridiumSkyblock.getInstance().getUserManager().getUser(event.getPlayer());
 
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
-
-        user.getCurrentIsland().ifPresent(island -> {
-            // 移除的代码部分
-            ArrayList<ItemStack> lostItems = new ArrayList<>();
-            for (ItemStack item : event.getPlayer().getInventory().getContents()) {
-                // ... （后续代码）
-            }
