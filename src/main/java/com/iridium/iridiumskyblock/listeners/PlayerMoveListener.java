@@ -14,9 +14,3 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class PlayerMoveListener implements Listener {
-
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
-        User user = IridiumSkyblock.getInstance().getUserManager().getUser(event.getPlayer());
-
-        IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
