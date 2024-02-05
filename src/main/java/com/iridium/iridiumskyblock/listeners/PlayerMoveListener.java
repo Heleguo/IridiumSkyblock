@@ -22,6 +22,7 @@ public class PlayerMoveListener implements Listener {
 
         IridiumSkyblock.getInstance().getTeamManager().sendIslandBorder(event.getPlayer());
 
+        user.getCurrentIsland().ifPresent(island -> {
             VoidEnhancementData voidEnhancementData = IridiumSkyblock.getInstance()
                     .getEnhancements().voidEnhancement.levels
                     .get(IridiumSkyblock.getInstance().getTeamManager().getTeamEnhancement(island, "void").getLevel());
