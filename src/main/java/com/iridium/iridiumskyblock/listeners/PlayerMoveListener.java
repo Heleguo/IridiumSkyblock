@@ -27,4 +27,3 @@ public class PlayerMoveListener implements Listener {
             for (ItemStack item : event.getPlayer().getInventory().getContents()) {
                 // ... （后续代码）
             }
-}
